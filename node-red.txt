@@ -1,0 +1,12 @@
+var temperature = parseFloat(msg.payload); // Convert serial data to double
+
+// Format data for MindSphere
+var formattedData = [
+  { "dataPointId": "DP-temperature", "qualityCode": "1", "value": temperature.toFixed(0) } // Convert temperature to string without decimal points
+];
+
+// Create message object to send to MindSphere
+msg.payload = formattedData;
+
+// Send the message to the MindSphere connector node
+return msg;
